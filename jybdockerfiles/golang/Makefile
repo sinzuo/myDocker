@@ -11,7 +11,7 @@ VPATH?=$(PWD)
 endif
 
 build:
-	sudo docker build --rm -t jyb-ubuntu-tools:16.04 .
+	sudo docker build --rm -t sinzuo-golang:16.04 .
 
 run:
 	sudo docker run -d --restart=always  --name mytooks -v $(VPATH):/mnt -p 9091:8000 jyb-ubuntu-tools:16.04

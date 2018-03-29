@@ -14,7 +14,7 @@ build:
 	sudo docker build --rm -t sinzuo-ftp:1.0 .
 
 run: kill
-	docker run -it  -d --name sinzuo-ftp -p 20:20 21:21 -v $(VPATH):/tmp sinzuo-ftp:1.0 
+	docker run -it  -d --name sinzuo-ftp -p 20:20 -p 21:21 -v $(VPATH):/tmp sinzuo-ftp:1.0 
 
 kill:
 	-sudo docker kill sinzuo-ftp

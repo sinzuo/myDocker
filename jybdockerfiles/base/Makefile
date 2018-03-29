@@ -10,18 +10,24 @@ else
 VPATH?=$(PWD)
 endif
 
+ifneq ($(VNAME),)
+NAME?=$(VNAME)
+else
+NAME?=sinzuo-ubuntu
+endif
+
 build:
 	sudo docker build --rm -t jyb-ubuntu:16.04 .
 
 run: kill
-	docker run -it  -d --name ubuntu-test -v $(VPATH):/tmp jyb-ubuntu:16.04 /bin/bash
+	docker run -it  -d --name $(NAME) -v $(VPATH):/tmp jyb-ubuntu:16.04 /bin/bash
 
 kill:
-	-sudo docker kill ubuntu-test
-	-sudo docker rm ubuntu-test
+	-sudo docker kill $(NAME)
+	-sudo docker rm $(NAME)
 
 enter:
-	sudo docker exec -it ftpd_server sh -c "export TERM=xterm && bash"
+	sudo docker exec -it $(NAME) sh -c "export TERM=xterm && bash"
 
 # git commands for quick chaining of make commands
 push:

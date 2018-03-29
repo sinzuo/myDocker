@@ -13,17 +13,17 @@ endif
 
 build:
 	git clone https://github.com/PanJiaChen/vue-element-admin.git
-#	sudo docker build -t vue:1.0 .
+	sudo docker build -t vue-node:1.0 .
 
 run: 
-	docker run -d --name vue1 -p 21:21 -p 9527:9527 -v $(VPATH):/mnt -e "PUBLICHOST=localhost" -e "ADDED_FLAGS=-d -d" jyb-vue:1.1
+	docker run -d --name vue2 -p 21:21 -p 9527:9527 -v $(VPATH):/mnt -e "PUBLICHOST=localhost" -e "ADDED_FLAGS=-d -d" jyb-vue:1.1
 
 kill:
-	-sudo docker kill vue1
-	-sudo docker rm vue1
+	-sudo docker kill vue2
+	-sudo docker rm vue2
 
 enter:
-	sudo docker exec -it ftpd_server sh -c "export TERM=xterm && bash"
+	sudo docker exec -it vue2 sh -c "export TERM=xterm && bash"
 
 # git commands for quick chaining of make commands
 push:
