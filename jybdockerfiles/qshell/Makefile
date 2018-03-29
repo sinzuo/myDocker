@@ -10,18 +10,25 @@ else
 VPATH?=$(PWD)
 endif
 
+ifneq ($(VNAME),)
+NAME?=$(VNAME)
+else
+NAME?=sinzuo-qshell
+endif
+
+
 build:
-	sudo docker build --rm -t jyb-ubuntu-tools:16.04 .
+	sudo docker build --rm -t jyb-qshell:13.0 .
 
 run:
-	sudo docker run -d --restart=always  --name mytooks -v $(VPATH):/mnt -p 9091:8000 jyb-ubuntu-tools:16.04
+	sudo docker run -d --name $(NAME) -v $(VPATH):/mnt -p 9091:8000 jyb-qshell:13.0
 
 kill:
-	-sudo docker kill ftpd_server
-	-sudo docker rm ftpd_server
+	-sudo docker kill $(NAME)
+	-sudo docker rm $(NAME)
 
 enter:
-	sudo docker exec -it ftpd_server sh -c "export TERM=xterm && bash"
+	sudo docker exec -it $(NAME) sh -c "export TERM=xterm && bash"
 
 # git commands for quick chaining of make commands
 push:
