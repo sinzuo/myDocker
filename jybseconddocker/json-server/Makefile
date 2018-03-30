@@ -11,16 +11,22 @@ VPATH?=$(PWD)
 endif
 
 
+ifneq ($(VNAME),)
+NAME?=$(VNAME)
+else
+NAME?=json-server
+endif
+
 build:
 	sudo docker build --rm -t json-server:1.0 .
 
 run:
-	sudo docker run -d -it --restart=always  --name json-server -v /home/jiang:/data -p 9091:8000 json-server:1.0
+	sudo docker run -d -it --restart=always  --name $(NAME) -v $(VPATH):/data -p 9091:8000 json-server:1.0
 #	sudo docker run -d --name business -v /home/jiang:/mnt -p 9091:80 business:1.0
 
 kill:
-	-sudo docker kill json-server
-	-sudo docker rm json-server
+	-sudo docker kill $(NAME)
+	-sudo docker rm $(NAME)
 
 enter:
 	sudo docker exec -it json-server sh -c "export TERM=xterm && bash"
