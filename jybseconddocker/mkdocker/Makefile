@@ -10,21 +10,26 @@ else
 VPATH?=$(PWD)
 endif
 
+ifneq ($(VNAME),)
+NAME?=$(VNAME)
+else
+NAME?=mkdocker
+endif
 
 build:
 	git clone https://github.com/visint/mkdocker
 	sudo docker build --rm -t mkdocker:1.0 .
 
 run:
-	sudo docker run -d --restart=always  --name mkdocker -v /home/jiang:/mnt -p 9093:80 mkdocker:1.0
+	sudo docker run -d --restart=always  --name $(NAME) -v /home/jiang:/mnt -p 9093:80 mkdocker:1.0
 #	sudo docker run -d --name business -v /home/jiang:/mnt -p 9091:80 business:1.0
 
 kill:
-	-sudo docker kill ftpd_server
-	-sudo docker rm ftpd_server
+	-sudo docker kill $(NAME)
+	-sudo docker rm $(NAME)
 
 enter:
-	sudo docker exec -it ftpd_server sh -c "export TERM=xterm && bash"
+	sudo docker exec -it $(NAME) sh -c "export TERM=xterm && bash"
 
 # git commands for quick chaining of make commands
 push:

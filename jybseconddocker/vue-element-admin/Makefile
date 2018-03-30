@@ -10,20 +10,29 @@ else
 VPATH?=$(PWD)
 endif
 
+ifneq ($(VNAME),)
+NAME?=$(VNAME)
+else
+NAME?=sinzuo-vue2
+endif
 
 build:
 	git clone https://github.com/PanJiaChen/vue-element-admin.git
+	git clone https://github.com/PanJiaChen/electron-vue-admin.git
+	git clone https://github.com/PanJiaChen/vueAdmin-template.git
+	git clone https://github.com/ElementUI/element-starter
+	git clone https://github.com/Jasonwang911/vue_mockjs.git
 	sudo docker build -t vue-node:1.0 .
 
 run: 
-	docker run -d --name vue2 -p 21:21 -p 9527:9527 -v $(VPATH):/mnt -e "PUBLICHOST=localhost" -e "ADDED_FLAGS=-d -d" jyb-vue:1.1
+	docker run -d --name $(NAME) -p 21:21 -p 9527:9527 -v $(VPATH):/mnt -e "PUBLICHOST=localhost" -e "ADDED_FLAGS=-d -d" jyb-vue:1.1
 
 kill:
-	-sudo docker kill vue2
-	-sudo docker rm vue2
+	-sudo docker kill $(NAME)
+	-sudo docker rm $(NAME)
 
 enter:
-	sudo docker exec -it vue2 sh -c "export TERM=xterm && bash"
+	sudo docker exec -it $(NAME) sh -c "export TERM=xterm && bash"
 
 # git commands for quick chaining of make commands
 push:

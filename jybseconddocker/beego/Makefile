@@ -10,19 +10,24 @@ else
 VPATH?=$(PWD)
 endif
 
+ifneq ($(VNAME),)
+NAME?=$(VNAME)
+else
+NAME?=beego
+endif
 
 build:
 	sudo docker build -t beego:1.0 .
 
 run: kill
-	sudo docker run -d --name beego -v $(VPATH):/mnt -p 8080:8080 beego:1.0
+	sudo docker run -d --name $(NAME) -v $(VPATH):/mnt -p 8080:8080 beego:1.0
 
 kill:
-	sudo docker kill beego
-	sudo docker rm beego
+	sudo docker kill $(NAME)
+	sudo docker rm $(NAME)
 
 enter:
-	sudo docker exec -it ftpd_server sh -c "export TERM=xterm && bash"
+	sudo docker exec -it $(NAME) sh -c "export TERM=xterm && bash"
 
 # git commands for quick chaining of make commands
 push:
