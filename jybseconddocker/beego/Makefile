@@ -21,10 +21,10 @@ build:
 
 run: kill
 	sudo docker run -d --name $(NAME) -v $(VPATH):/mnt -p 8080:8080 beego:1.0
-
+	#source /mnt/run.sh
 kill:
-	sudo docker kill $(NAME)
-	sudo docker rm $(NAME)
+	-sudo docker kill $(NAME)
+	-sudo docker rm $(NAME)
 
 enter:
 	sudo docker exec -it $(NAME) sh -c "export TERM=xterm && bash"
