@@ -14,11 +14,11 @@ build:
 	sudo docker build --rm -t sinzuo-golang:16.04 .
 
 run:
-	sudo docker run -d --restart=always  --name mytooks -v $(VPATH):/mnt -p 9091:8000 jyb-ubuntu-tools:16.04
+	sudo docker run -d --restart=always  --name mytooks -v $(VPATH):/mnt -p 9096:8000 sinzuo-golang:16.04
 
 kill:
-	-sudo docker kill ftpd_server
-	-sudo docker rm ftpd_server
+	-sudo docker kill mytooks
+	-sudo docker rm mytooks
 
 enter:
 	sudo docker exec -it ftpd_server sh -c "export TERM=xterm && bash"

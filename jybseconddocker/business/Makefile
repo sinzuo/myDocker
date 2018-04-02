@@ -22,7 +22,7 @@ build:
 	sudo docker build --rm -t business:2.0 .
 
 run:
-	sudo docker run -d --restart=always  --name $(NAME) -v $(VPATH):/mnt -p 9091:80 business:1.0
+	sudo docker run -d --restart=always  --name $(NAME) -v $(VPATH):/mnt -p 9094:80 business:2.0
 #	sudo docker run -d --name business -v /home/jiang:/mnt -p 9091:80 business:1.0
 
 kill:

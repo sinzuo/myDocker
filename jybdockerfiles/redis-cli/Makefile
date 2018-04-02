@@ -11,14 +11,14 @@ VPATH?=$(PWD)
 endif
 
 build:
-	sudo docker build --rm -t jyb-ubuntu-tools:16.04 .
+	sudo docker build --rm -t sinzuo-redis:1.0 .
 
 run:
-	sudo docker run -d --restart=always  --name mytooks -v $(VPATH):/mnt -p 9091:8000 jyb-ubuntu-tools:16.04
+	sudo docker run -it -d  --name redisc -v $(VPATH):/mnt -p 9095:8000 sinzuo-redis:1.0
 
 kill:
-	-sudo docker kill ftpd_server
-	-sudo docker rm ftpd_server
+	-sudo docker kill redisc
+	-sudo docker rm redisc
 
 enter:
 	sudo docker exec -it ftpd_server sh -c "export TERM=xterm && bash"
