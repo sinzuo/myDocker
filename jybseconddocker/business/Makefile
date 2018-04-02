@@ -18,8 +18,8 @@ endif
 
 
 build:
-	git clone https://github.com/visint/markdown
-	sudo docker build --rm -t business:1.0 .
+#	git clone https://github.com/visint/markdown
+	sudo docker build --rm -t business:2.0 .
 
 run:
 	sudo docker run -d --restart=always  --name $(NAME) -v $(VPATH):/mnt -p 9091:80 business:1.0
