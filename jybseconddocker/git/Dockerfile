@@ -5,4 +5,4 @@ FROM jyb-ubuntu-tools:16.04
 #ENTRYPOINT ["/etc/init.d/tftpd-hpa","start"]
 
 
-RUN apt-get update&&apt-get install -y git
+RUN apt-get update&&apt-get install -y vim git
