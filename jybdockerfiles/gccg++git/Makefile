@@ -11,18 +11,14 @@ VPATH?=$(PWD)
 endif
 
 build:
-#	git clone git://github.com/sinzuo/TServ
-	sudo docker build --rm -t sinzuo-tserv:1.0 .
+	sudo docker build --rm -t sinzuo-gitgcc:1.0 .
 
 run:
-	docker run --name tserv-redis -p6379:6379 -d redis:4.0.11
-	sudo docker run -it -d  --name tserv -v $(VPATH):/mnt -p 8880:8880/udp sinzuo-tserv:1.0
+	sudo docker run -it -d  --name gitgcc -v $(VPATH):/mnt -p 9197:8000 sinzuo-gitgcc:1.0
 
 kill:
-	-sudo docker kill tserv-redis
-	-sudo docker kill tserv
-	-sudo docker rm tserv=redis
-	-sudo docker rm tserv
+	-sudo docker kill gitgcc
+	-sudo docker rm gitgcc
 
 enter:
 	sudo docker exec -it ftpd_server sh -c "export TERM=xterm && bash"
