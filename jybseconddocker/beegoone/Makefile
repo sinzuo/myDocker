@@ -22,6 +22,9 @@ push:
 pull:
 	git pull
 
-image:
+file:=beegoone.tar.gz
+images:
+        ifneq ($(file), $(wildcard $(file)))
 	wget http://docker-image-jiang.oss-cn-hangzhou.aliyuncs.com/beegoone.tar.gz
 	docker load <   beegoone.tar.gz
+        endif
