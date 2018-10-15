@@ -20,8 +20,8 @@ run:
 #	sudo docker run -d --name business -v /home/jiang:/mnt -p 9091:80 business:1.0
 
 kill:
-	-sudo docker kill ftpd_server
-	-sudo docker rm ftpd_server
+	-sudo docker kill tftp
+	-sudo docker rm tftp
 
 enter:
 	sudo docker exec -it ftpd_server sh -c "export TERM=xterm && bash"
