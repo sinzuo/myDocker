@@ -57,3 +57,7 @@ docker run --rm -it -v $OVPN_DATA:/etc/openvpn kylemanna/openvpn ovpn_listclient
 8. 撤销 Client Certificates
 docker run --rm -it -v $OVPN_DATA:/etc/openvpn kylemanna/openvpn easyrsa revoke hahaha
 docker run --rm -it -v $OVPN_DATA:/etc/openvpn kylemanna/openvpn easyrsa gen-crl
+
+
+route del -net 0.0.0.0/1 gw 192.168.255.9
+route del -net 0.0.0.0/1 gw 192.168.255.9

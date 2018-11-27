@@ -24,3 +24,13 @@ build:
 show:
 	docker run --rm -it -v ${OVPN_DATA}:/etc/openvpn kylemanna/openvpn ovpn_listclients	
 
+kill:
+	-sudo docker kill openvpn
+	-sudo docker rm openvpn
+
+openvpn:=openvpn.tar.gz
+images:
+        ifneq ($(file), $(wildcard $(file)))
+	wget http://docker-image-jiang.oss-cn-hangzhou.aliyuncs.com/openvpn.tar.gz
+	docker load <   openvpn.tar.gz
+        endif
