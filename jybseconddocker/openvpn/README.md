@@ -63,7 +63,6 @@ route del -net 0.0.0.0/1 gw 192.168.255.9
 route del -net 0.0.0.0/1 gw 192.168.255.9
 
 
-
+sudo route add -net 192.168.255.0/24 dev tun0
 sudo route del -net 0.0.0.0/1 dev tun0
 sudo route del -net 128.0.0.0/1 dev tun0
-sudo route add -net 192.168.255.0/24 dev tun0
