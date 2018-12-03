@@ -26,6 +26,13 @@ push:
 pull:
 	git pull
 
+save:
+	git save $(workfile):1.0 > $(workfile).tar
+
+load:
+	git load < $(workfile).tar
+
+
 file:=beegoone.tar.gz
 gopath:=go-vs-code-bin.rar
 images:
