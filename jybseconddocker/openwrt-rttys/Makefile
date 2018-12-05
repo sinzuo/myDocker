@@ -1,16 +1,16 @@
 .PHONY: build run kill enter push pull
 
-workfile:=openwrt
+workfile:=ttys
 
 build:
 #	wget http://docker-image-jiang.oss-cn-hangzhou.aliyuncs.com/beegoone.tar.gz
 	sudo docker build -t $(workfile):1.0 .
 
 run: kill
-	sudo docker run -it -d --name $(workfile) -v $(PWD):/mnt -p 8080:8080 $(workfile):1.0
+	sudo docker run -it -d --name $(workfile) -v $(PWD):/mnt -p 5912:5912 $(workfile):1.0
 
 runa: kill
-	sudo docker run -it -d --name $(workfile) -v $(PWD):/data -p 8080:8080 $(workfile):1.0
+	sudo docker run -it -d --name $(workfile) -v $(PWD):/data -p 5912:5912 $(workfile):1.0
 kill:
 	-sudo docker kill $(workfile)
 	-sudo docker rm $(workfile)
@@ -33,7 +33,7 @@ load:
 	sudo git load < $(workfile).tar
 
 
-file:=beegoone.tar.gz
+file:=ttys.tar.gz
 gopath:=go-vs-code-bin.rar
 images:
         ifneq ($(file), $(wildcard $(file)))
