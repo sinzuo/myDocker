@@ -27,18 +27,20 @@ pull:
 	sudo git pull
 
 save:
-	sudo git save $(workfile):1.0 > $(workfile).tar
+	sudo docker save $(workfile):1.0 > $(workfile).tar
 
 load:
-	sudo git load < $(workfile).tar
+	sudo docker load < $(workfile).tar
+	
+scp: save
+	sudo scp -P 12345 $(workfile).tar jiang@qq.sinzuo.com:/shareDir9091/dockerImages/
 
-
-file:=beegoone.tar.gz
+file:=$(workfile).tar
 gopath:=go-vs-code-bin.rar
 images:
         ifneq ($(file), $(wildcard $(file)))
-	wget http://docker-image-jiang.oss-cn-hangzhou.aliyuncs.com/beegoone.tar.gz
-	docker load <   beegoone.tar.gz
+	wget http://qq.sinzuo.com:9091/dockerImages/$(file)
+	docker load <   $(file)
         endif
 
 
