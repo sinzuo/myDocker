@@ -27,10 +27,10 @@ pull:
 	sudo git pull
 
 save:
-	sudo git save $(workfile):1.0 > $(workfile).tar
+	sudo docker save $(workfile):1.0 > $(workfile).tar
 
 load:
-	sudo git load < $(workfile).tar
+	sudo docker load < $(workfile).tar
 
 
 file:=ttys.tar.gz
