@@ -1,6 +1,6 @@
 .PHONY: build run kill enter push pull
 
-workfile:=ttys
+workfile:=rttys
 
 build:
 #	wget http://docker-image-jiang.oss-cn-hangzhou.aliyuncs.com/beegoone.tar.gz
