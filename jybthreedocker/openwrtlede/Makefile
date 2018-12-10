@@ -1,6 +1,8 @@
 .PHONY: build run kill enter push pull
 
-workfile:=openwrt
+workfile:=openwrtlede
+DLPATH:=/mnt/dShare/openwrtDir/dl
+VPATH:=/work/
 
 ifneq ($(VPATH),)
 VPATH?=$(VPATH)
@@ -8,13 +10,12 @@ else
 VPATH?=$(PWD)
 endif
 
-
 build:
 #	wget http://docker-image-jiang.oss-cn-hangzhou.aliyuncs.com/beegoone.tar.gz
 	sudo docker build -t $(workfile):1.0 .
 
 run: kill
-	sudo docker run -it -d --name $(workfile) -v $(VPATH):/mnt -p 8080:8080 $(workfile):1.0
+	sudo docker run -it -d --name $(workfile) -v $(VPATH):/mnt -v $(DLPATH):/root/dl -p 18080:8080 -p 10001:22 $(workfile):1.0
 
 runa: kill
 	sudo docker run -it -d --name $(workfile) -v $(PWD):/data -p 8080:8080 $(workfile):1.0
