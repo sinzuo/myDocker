@@ -10,8 +10,24 @@
 2， 拉取镜像:  docker pull timiil/coolsnowwolf-lede-builder
 3,   运行容器:  docker run -it -v /home/lede_output:/lede/bin timiil/coolsnowwolf-lede-builder
 4, 在容器内运行：  
+
+
+编译方法
+export FORCE_UNSAFE_CONFIGURE=1
+cd /mnt/openwrtlede 
+ln -s /root/dl dl
+
+./scripts/feeds update -a
+./scripts/feeds install -a
+
 make menuconfig
 
 。。。
 
-make -j1 V=s
+nohup make -j1 V=99 &
+
+内核配置文件
+make kernel_menuconfig
+
+ target/linux/ramips/mt7628/config-3.18 
+ make target/linux/compile V=99 编译内核
