@@ -17,7 +17,8 @@ NAME?=sinzuowww
 endif
 
 build:
-#	git clone https://github.com/sinzuo/sinzuowww
+	rm -rf sinzuowww
+	git clone https://github.com/sinzuo/sinzuowww
 	sudo docker build --rm -t sinzuowww:1.0 .
 
 run:
