@@ -1,12 +1,8 @@
+###Ubuntu 命令行配置 shadowsocks 代理
 
-plus2047
-plus2047 25
-2017-05-01 发布
-Ubuntu 命令行配置 shadowsocks 代理
+此docker 使用说mg ， 先进入docker,然后执行 /root/run.sh  就可以启动 代理了
 
-    代理 shadowsocks linux 
-
-9.1k 次阅读  ·  读完需要 4 分钟
+###制作此docker 的操作方法
 
 使用 shadowsock + polipo 为 ubuntu 配置命令行代理。
 安装软件包
