@@ -21,7 +21,7 @@ build:
 	git clone https://github.com/sinzuo/sinzuowww
 	sudo docker build --rm -t sinzuowww:1.0 .
 
-run:
+run:kill
 	sudo docker run -d --restart=always  --name $(NAME) -v /home/jiang:/mnt -p 80:80 sinzuowww:1.0
 #	sudo docker run -d --name business -v /home/jiang:/mnt -p 9091:80 business:1.0
 

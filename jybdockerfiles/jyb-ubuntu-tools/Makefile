@@ -20,7 +20,7 @@ build:
 	sudo docker build --rm -t jyb-ubuntu-tools:16.04 .
 
 run:
-	sudo docker run -d --restart=always  --name $(NAME) -v $(VPATH):/mnt -p 9091:8000 jyb-ubuntu-tools:16.04
+	sudo docker run -d --restart=always  --name $(NAME) -v $(VPATH):/mnt -p 19091:8000 jyb-ubuntu-tools:16.04
 
 kill:
 	-sudo docker kill $(NAME)
