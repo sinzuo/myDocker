@@ -34,7 +34,7 @@ config wireguard_wg0
     option persistent_keepalive '25'                                
     option endpoint_port '51820'                                    
     option route_allowed_ips '1'                                    
-    list allowed_ips '0.0.0.0/0'                                    
+    list allowed_ips '10.0.0.0/24'                                    
                                                                     
 config interface 'wg0'                                              
     option proto 'wireguard'                                        

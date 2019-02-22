@@ -19,3 +19,41 @@ Endpoint = yourserver.example:51820
 PersistentKeepalive = 25
 
 
+`````
+
+[Interface]
+PrivateKey = cPeJqyurz/zmPxbnH6cNB7JNGah3WFJGYks08m5k53c=
+DNS = 8.8.8.8
+Address = 10.0.0.3/24
+
+[Peer]
+PublicKey = fpNkfNdNytEgc9tP7uGzYZ8cIPedi/TrkRBeRTifv3Q=
+AllowedIPs = 10.0.0.0/24
+Endpoint = qq.sinzuo.com:51820
+
+# Send periodic keepalives to ensure connection stays up behind NAT.
+PersistentKeepalive = 25
+
+````
+
+openwrt  wireguard peizhi 
+````
+vim /etc/config/network
+
+
+config wireguard_wg0
+    option public_key 'fpNkfNdNytEgc9tP7uGzYZ8cIPedi/TrkRBeRTifv3Q='
+    option endpoint_host '174.137.53.129'
+    option persistent_keepalive '25'
+    option endpoint_port '51820'
+    option route_allowed_ips '1'
+    list allowed_ips '10.0.0.0/24'
+
+config interface 'wg0'
+    option proto 'wireguard'
+    option private_key 'cPeJqyurz/zmPxbnH6cNB7JNGah3WFJGYks08m5k53c='
+    list addresses '10.0.0.3/24'
+
+````
+
+
