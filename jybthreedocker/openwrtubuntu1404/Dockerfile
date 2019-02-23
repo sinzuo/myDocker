@@ -10,7 +10,7 @@ RUN apt-get update \
   
 RUN mkdir -p /var/run/sshd
 RUN ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
-RUN cp id_rsa* ~/.ssh/
+ADD ./id_rsa* ~/.ssh/
 
 ENV FORCE_UNSAFE_CONFIGURE 1
 CMD ["/usr/sbin/sshd","-D"]
