@@ -5,5 +5,5 @@ FROM jyb-ubuntu:16.04
 #ENTRYPOINT ["/etc/init.d/tftpd-hpa","start"]
 
 
-RUN apt-get update&& apt-get install -y mysql-client libmysqlclient-dev
-
+RUN apt-get update&& apt-get install -y mysql-client libmysqlclient-dev vim
+ADD mysqlexe.sh /root/
