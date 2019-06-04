@@ -11,6 +11,7 @@ VPATH?=$(PWD)
 endif
 
 build:
+	rm testServer
 	wget http://o6zvblq1c.bkt.clouddn.com/testServer
 	chmod 777 testServer
 	sudo docker build --rm -t sinzuotftp:1.0 .
