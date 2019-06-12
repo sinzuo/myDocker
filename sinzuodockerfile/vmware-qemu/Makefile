@@ -30,3 +30,6 @@ push:
 
 pull:
 	git pull
+
+echo:
+	echo "docker run -it  -d --name qemu-test -v /mnt/linuxShare:/mnt qemu:1.0 /bin/bash"

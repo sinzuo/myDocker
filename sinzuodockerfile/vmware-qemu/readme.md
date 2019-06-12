@@ -5,7 +5,7 @@ $ qemu-img convert -f raw -O qcow2 image.img image.qcow2
 
 
 
-qemu-img convert -f raw -O vmdk ubuntu17.04-2019.06.11.bin ubuntu17.04-2019.06.11.vmdk
+qemu-img convert -f raw -O vmdk ubuntu17.04-2019.06.11.img ubuntu17.04-2019.06.11.vmdk
 
 --------------------- 
 
