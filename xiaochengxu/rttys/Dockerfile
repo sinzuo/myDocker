@@ -10,9 +10,9 @@ FROM node
 #RUN npm install --registry=https://registry.npm.taobao.org
 
 RUN apt-get update&&apt-get install -y openssh-server git
-WORKDIR /mnt 
+WORKDIR /data
 RUN git clone https://github.com/sinzuo/rttys
-RUN cd /mnt/rttys/html/&&npm install&&npm run build
+RUN cd /mnt/data/html/&&npm install&&npm run build
 
 #暴露container的端口
 EXPOSE 8080
