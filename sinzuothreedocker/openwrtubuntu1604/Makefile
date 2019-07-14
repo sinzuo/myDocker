@@ -1,8 +1,8 @@
 .PHONY: build run kill enter push pull
 
 workfile:=openwrtubuntu1604
-DLPATH:=/mnt/dShare/openwrtDir/dl
-VPATH:=/work/
+DLPATH:=/mnt/dShare/
+VPATH:=/mnt/dShare/
 
 ifneq ($(VPATH),)
 VPATH?=$(VPATH)
@@ -16,7 +16,7 @@ build:
 	sudo docker build -t $(workfile):1.0 .
 
 run: kill
-	sudo docker run -it -d --name $(workfile) -v $(VPATH):/mnt -v $(DLPATH):/root/dl -p 18082:8080 -p 10003:22 $(workfile):1.0
+	sudo docker run -it -d --name $(workfile) -v $(VPATH):/mnt -p 18082:8080 -p 10003:22 $(workfile):1.0
 
 
 runa: kill
