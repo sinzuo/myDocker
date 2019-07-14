@@ -5,7 +5,7 @@ RUN apt-get update \
 	&& useradd -d /home/tozedsoft -m -s /bin/bash tozedsoft \
         && usermod -a -G sudo tozedsoft \
         && echo tozedsoft:123456 | chpasswd \
- 	&& apt-get install openssh-server make gcc g++ wget python gawk xz-utils zlib1g-dev git libsdl1.2-dev libssl-dev libncurses5-dev unzip subversion zip -y \
+ 	&& apt-get install -y openssh-server make gcc g++ wget python gawk xz-utils zlib1g-dev git libsdl1.2-dev libssl-dev libncurses5-dev unzip subversion zip \
   &&rm -rf /var/lib/apt/lists/* 
   
 RUN mkdir -p /var/run/sshd
